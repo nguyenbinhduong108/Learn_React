@@ -1,20 +1,10 @@
-import { useState } from "react";
-import Hello from "./components/Hello";
-import Fruits from "./components/Fruits";
-import Conditional from "./components/Conditional";
-import Message from "./components/Message";
+import Todo from "./components/Todo";
+import style from "./App.module.css";
 
 export default function App() {
-  // const [count, setCount] = useState(0);
-  // const person = {
-  //   name: "Rob",
-  //   emoji: "😊",
-  // };
-
   return (
-    <Message></Message>
-    // <Conditional></Conditional>
-    // <Fruits></Fruits>
-    // <Hello person={person} />
+    <div className={style.container}>
+      <Todo />
+    </div>
   );
 }
