@@ -1,0 +1,27 @@
+.item {
+    background-color: rgba(255, 255, 255, .2);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.taskTrue {
+    flex: 1;
+}
+
+.taskFalse {
+    flex: 1;
+    text-decoration: line-through;
+}
+
+i:hover {
+    color: rgba(0, 0, 0, .3);
+    cursor: pointer;
+}
+
+i:active {
+    color: rgba(0, 0, 0, .2);
+}
