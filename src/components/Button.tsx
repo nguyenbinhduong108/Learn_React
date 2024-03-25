@@ -2,8 +2,8 @@ import React from "react";
 import style from "./button.module.css";
 
 export default function Button({
-  children,
-  onClick,
+  children = <button>Hello</button>,
+  onClick = () => {},
 }: {
   children: React.ReactNode;
   onClick: () => void;

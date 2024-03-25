@@ -6,23 +6,42 @@ import Input from "./Input";
 import Item from "./Item";
 import Header from "./Header";
 
+interface TodoType {
+  id: number;
+  name: string;
+  completed: boolean;
+}
+
 export default function Todo() {
   const [todo, setTodo] = useState("");
 
-  const [todos, setTodos] = useState([
-    { id: 1, name: "task1", completed: true },
-    { id: 2, name: "task2", completed: false },
-  ]);
+  const [todos, setTodos] = useState<TodoType[]>(() => {
+    return JSON.parse(localStorage.getItem("todos") as string) ?? [];
+  });
 
   function handleChange(e: any) {
     setTodo(e.target.value);
   }
 
   function handleClickAdd() {
-    setTodos([
-      ...todos,
-      { id: todos.length + 1, name: todo, completed: false },
-    ]);
+    setTodos((prev) => {
+      const newTodo = [
+        ...prev,
+        {
+          id: prev.length + 1,
+          name: todo,
+          completed: false,
+        },
+      ];
+
+      const stringNewTodo = JSON.stringify(newTodo);
+
+      localStorage.setItem("todos", stringNewTodo);
+
+      return newTodo;
+    });
+
+    setTodo("");
   }
 
   function handleClickCheck(id: number) {
@@ -37,7 +56,8 @@ export default function Todo() {
       return todo;
     });
 
-    setTodos(updatedTodos);
+    localStorage.setItem("todos", JSON.stringify(updatedTodos));
+    setTodos(JSON.parse(localStorage.getItem("todos") as string));
   }
 
   function handleClickDelete(id: number) {
@@ -46,8 +66,8 @@ export default function Todo() {
         return todo;
       }
     });
-
-    setTodos(deleteTodos);
+    localStorage.setItem("todos", JSON.stringify(deleteTodos));
+    setTodos(JSON.parse(localStorage.getItem("todos") as string));
   }
 
   return (
@@ -74,7 +94,6 @@ export default function Todo() {
           New todo
         </Input>
         <Button onClick={handleClickAdd}>Add todo</Button>
-
       </div>
     </div>
   );
