@@ -20,6 +20,12 @@ export default function Todo() {
     return JSON.parse(localStorage.getItem("todos") as string) ?? [];
   });
 
+  const [dialog, setDialog] = useState({
+    show: false,
+    message: "",
+    completed: false,
+  });
+
   function handleChange(e: any) {
     setTodo(e.target.value);
   }
@@ -71,6 +77,14 @@ export default function Todo() {
     setTodos(JSON.parse(localStorage.getItem("todos") as string));
   }
 
+  function handleClick(item: TodoType) {
+    setDialog({ show: true, message: item.name, completed: item.completed });
+  }
+
+  function handleCloseDialog() {
+    setDialog({ show: false, message: "", completed: false });
+  }
+
   return (
     <div>
       <Header></Header>
@@ -81,6 +95,7 @@ export default function Todo() {
           completed={item.completed}
           handleClickCheck={() => handleClickCheck(item.id)}
           handleClickDelete={() => handleClickDelete(item.id)}
+          handleClick={() => handleClick(item)}
         >
           {item.name}
         </Item>
@@ -97,7 +112,13 @@ export default function Todo() {
         <Button onClick={handleClickAdd}>Add todo</Button>
       </div>
 
-      <Dialog />
+      {dialog.show && (
+        <Dialog message={dialog.message} completed={dialog.completed}>
+          <button className="close-dialog" onClick={handleCloseDialog}>
+            <i className="fa-solid fa-xmark"></i>
+          </button>
+        </Dialog>
+      )}
     </div>
   );
 }
