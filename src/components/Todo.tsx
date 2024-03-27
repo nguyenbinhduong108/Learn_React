@@ -5,6 +5,7 @@ import Button from "./Button";
 import Input from "./Input";
 import Item from "./Item";
 import Header from "./Header";
+import Dialog from "./dialog/dialog";
 
 interface TodoType {
   id: number;
@@ -95,6 +96,8 @@ export default function Todo() {
         </Input>
         <Button onClick={handleClickAdd}>Add todo</Button>
       </div>
+
+      <Dialog />
     </div>
   );
 }

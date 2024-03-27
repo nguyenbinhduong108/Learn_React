@@ -1,0 +1,36 @@
+$color-primary: rgb(29, 168, 29);
+$color-error: rgb(201, 42, 42);
+
+.btn-primary {
+  min-width: 50px;
+  padding: 4px 12px;
+  background-color: $color-primary;
+  border: unset;
+  outline: unset;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 2px;
+
+  &:hover {
+    background-color: darken($color-primary, 10%);
+  }
+}
+
+.btn-error {
+  min-width: 50px;
+  padding: 4px 12px;
+  background-color: $color-error;
+  border: unset;
+  outline: unset;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 2px;
+
+  &:hover {
+    background-color: darken($color-error, 10%);
+  }
+}
