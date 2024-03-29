@@ -11,6 +11,7 @@ import {
 import Reducer from "./Todo/Reducer.tsx";
 import Content from "./Content";
 import Theme from "./Theme/Theme.tsx";
+import TabContainer from "./Transition/Transition.tsx";
 
 const initialState = 0;
 
@@ -72,8 +73,13 @@ export default function App() {
     // <div className={style.container}>
     //   <Reducer />
     // </div>
+
+    // <div className={style.container}>
+    //   <Theme />
+    // </div>
+
     <div className={style.container}>
-      <Theme />
+      <TabContainer />
     </div>
   );
 }
