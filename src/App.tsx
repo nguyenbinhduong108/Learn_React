@@ -1,7 +1,15 @@
 import Todo from "./components/Todo";
 import style from "./App.module.css";
-import { useCallback, useEffect, useReducer, useRef, useState } from "react";
-import Reducer from "./Reducer";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
+import Reducer from "./Todo/Reducer.tsx";
+import Content from "./Content";
 
 const initialState = 0;
 
@@ -33,20 +41,17 @@ export default function App() {
   //   console.log(inputRef.current);
   // });
 
-  // const [count, setCount] = useState(0);
-  const [count, dispatch] = useReducer(reducer, initialState);
+  const [count, setCount] = useState(0);
+  // const [count, dispatch] = useReducer(reducer, initialState);
 
   //#region useCallback
-  // const onIncrease = useCallback(() => {
-  //   setCount((prev) => prev + 1);
-  // }, []);
+  const onIncrease = useCallback(() => {
+    setCount((prev) => prev + 1);
+  }, []);
 
   return (
     // <div className={style.container}>
     //   <Todo />
-    //   <Content onIncrease={onIncrease} />
-
-    //   <h1>{count}</h1>
     //   <h1 onClick={handleClick}>Hello</h1>
     //   <input ref={inputRef} placeholder="Enter name..." />
     // </div>
@@ -57,6 +62,14 @@ export default function App() {
     //   <button onClick={() => dispatch(DOWN_ACTION)}>Down</button>
     // </div>
 
-    <Reducer />
+    // <div className={style.container}>
+    //   <Content onIncrease={onIncrease} />
+
+    //   <h1>{count}</h1>
+    // </div>
+
+    <div className={style.container}>
+      <Reducer />
+    </div>
   );
 }
