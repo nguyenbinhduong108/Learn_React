@@ -10,6 +10,7 @@ import {
 } from "react";
 import Reducer from "./Todo/Reducer.tsx";
 import Content from "./Content";
+import Theme from "./Theme/Theme.tsx";
 
 const initialState = 0;
 
@@ -68,8 +69,11 @@ export default function App() {
     //   <h1>{count}</h1>
     // </div>
 
+    // <div className={style.container}>
+    //   <Reducer />
+    // </div>
     <div className={style.container}>
-      <Reducer />
+      <Theme />
     </div>
   );
 }
